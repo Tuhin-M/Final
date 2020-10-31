@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "98906503566",
+    "firebase_url": "https://presence-7b90a.firebaseio.com",
+    "project_id": "presence-7b90a",
+    "storage_bucket": "presence-7b90a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:98906503566:android:c6e28af4ecaba2f4b6ccdf",
+        "android_client_info": {
+          "package_name": "com.company.Presence"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "98906503566-b6fiaoq218g6pql97kcse2tdr5alssg9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.company.Presence",
+            "certificate_hash": "19987bd22bff3e6d44f9657d71d5ce2e8439125f"
+          }
+        },
+        {
+          "client_id": "98906503566-9rtukn35ic76tuf8mj4pvs9dldo683up.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCa0Tj-xKXzq12McAVCiY3i_0Z1kLBQ9DQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "98906503566-9rtukn35ic76tuf8mj4pvs9dldo683up.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
