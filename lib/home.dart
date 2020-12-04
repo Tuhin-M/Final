@@ -4,12 +4,28 @@ import 'package:firebase_auth/firebase_auth.dart';
 
 import 'login.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   final User user;
   HomePage({this.user});
+
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
   final _key = GlobalKey<FormState>();
 
-  Future SendData() async {
+  final myController = TextEditingController();
+
+  @override
+  void dispose() {
+    // Clean up the controller when the widget is disposed.
+    myController.dispose();
+    super.dispose();
+  }
+
+  Future SendData(name) async {
+    print("   ??? " + name);
     final db = FirebaseFirestore.instance.collection("Userinfo").add({
       'name': "Tuhin",
       'roll': 35000117019.toString(),
@@ -21,14 +37,14 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Presence bhu"),
+        title: Text("Presence bhu nm"),
         centerTitle: true,
         actions: <Widget>[
           IconButton(
               icon: Icon(Icons.photo),
               onPressed: () {
                 if (_key.currentState.validate()) {
-                  SendData();
+                  //SendData();
                 }
               })
         ],
@@ -54,6 +70,7 @@ class HomePage extends StatelessWidget {
                       } else
                         return null;
                     },
+                    controller: myController,
                   ),
                   TextFormField(
                     decoration: const InputDecoration(
@@ -89,9 +106,12 @@ class HomePage extends StatelessWidget {
                     child: Text("Validate"),
                     color: Colors.blue,
                     textColor: Colors.white,
-                    onPressed: () {},
+                    onPressed: () {
+                      print("hello" + myController.text);
+                      SendData(myController.text);
+                    },
                   ),
-                  Text(user.email.toString()),
+                  Text(widget.user.email.toString()),
                   RaisedButton(
                     onPressed: () {
                       Navigator.push(
