@@ -27,7 +27,7 @@ class _HomePageState extends State<HomePage> {
   Future SendData(name) async {
     print("   ??? " + name);
     final db = FirebaseFirestore.instance.collection("Userinfo").add({
-      'name': "Tuhin",
+      'name': name,
       'roll': 35000117019.toString(),
       'number': 75000117019,
     });
@@ -107,7 +107,7 @@ class _HomePageState extends State<HomePage> {
                     color: Colors.blue,
                     textColor: Colors.white,
                     onPressed: () {
-                      print("hello" + myController.text);
+                      print("hello " + myController.text);
                       SendData(myController.text);
                     },
                   ),
