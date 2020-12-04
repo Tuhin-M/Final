@@ -21,7 +21,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Presence"),
+        title: Text("Presence bhu"),
         centerTitle: true,
         actions: <Widget>[
           IconButton(
@@ -44,7 +44,7 @@ class HomePage extends StatelessWidget {
                     decoration: const InputDecoration(
                       icon: Icon(Icons.person),
                       hintText: 'What do people call you?',
-                      labelText: 'Name *',
+                      labelText: 'Name **',
                     ),
                     validator: (value) {
                       if (value.isEmpty) {

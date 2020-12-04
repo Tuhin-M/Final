@@ -3,10 +3,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart';
-import 'package:qr_flutter/qr_flutter.dart';
+//import 'package:qr_flutter/qr_flutter.dart';
 
 import 'login.dart';
-
 
 class StudentHomePage extends StatelessWidget {
   final User user;
@@ -44,7 +43,7 @@ class StudentHomePage extends StatelessWidget {
                     decoration: const InputDecoration(
                       icon: Icon(Icons.person),
                       hintText: 'What do people call you?',
-                      labelText: 'Name *',
+                      labelText: 'Name **',
                     ),
                     validator: (value) {
                       if (value.isEmpty) {
@@ -54,7 +53,7 @@ class StudentHomePage extends StatelessWidget {
                       } else
                         return null;
                     },
-            //        controller: myControllerName,
+                    //        controller: myControllerName,
                   ),
                   new TextFormField(
                     decoration: new InputDecoration(
@@ -76,7 +75,7 @@ class StudentHomePage extends StatelessWidget {
                       else
                         return null;
                     }, // Only numbers can be entered
-                //    controller: myControllerRoll,
+                    //    controller: myControllerRoll,
                   ),
                   new TextFormField(
                     decoration: new InputDecoration(
@@ -97,7 +96,7 @@ class StudentHomePage extends StatelessWidget {
                       else
                         return null;
                     }, // Only numbers can be entered
-                //    controller: myControllerNumber,
+                    //    controller: myControllerNumber,
                   ),
                   FlatButton(
                     child: Text("Validate"),
@@ -105,14 +104,15 @@ class StudentHomePage extends StatelessWidget {
                     textColor: Colors.white,
                     onPressed: () {
                       if (_key.currentState.validate()) {
+                        print("asd");
                         SendData();
                       }
                     },
                   ),
-                  QrImage(
-                      data: "35000117019",
-                      version: QrVersions.auto,
-                      size: 250.0),
+                  // QrImage(
+                  //     data: "35000117019",
+                  //     version: QrVersions.auto,
+                  //     size: 250.0),
                   Text(user.email.toString()),
                   RaisedButton(
                     onPressed: () {
