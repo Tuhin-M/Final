@@ -28,7 +28,7 @@ class HomePage extends StatelessWidget {
               icon: Icon(Icons.photo),
               onPressed: () {
                 if (_key.currentState.validate()) {
-                  SendData;
+                  SendData();
                 }
               })
         ],
