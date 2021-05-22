@@ -1,8 +1,9 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:presence/teacherHome.dart';
 import 'package:presence/home.dart';
 import 'package:presence/signup.dart';
-import 'package:presence/studentHome.dart';
+import 'home.dart';
 
 import 'login.dart';
 
@@ -17,13 +18,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: SignUpPage(),
-      routes: {
-        "/login": (context) => LoginPage(),
-        "/signup": (context) => SignUpPage(),
-        "/home": (context) => StudentHomePage(),
-      },
-    );
+        debugShowCheckedModeBanner: false,
+        home: LoginPage(),
+        routes: {
+          "/login":(context)=>LoginPage(),
+          "/signup":(context)=>SignUpPage(),
+          "/Home":(context)=>HomePage(),
+          "/teacherHome":(context)=>TeacherHomePage(),
+        },
+        );
   }
 }

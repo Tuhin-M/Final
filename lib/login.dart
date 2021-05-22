@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:presence/constants.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:presence/home.dart';
+import 'package:presence/teacherHome.dart';
+// ignore: unused_import
+import 'home.dart';
 
 import 'signup.dart';
 
@@ -21,7 +23,7 @@ class _LoginPageState extends State<LoginPage> {
             .signInWithEmailAndPassword(email: email, password: password))
         .user;
     if (user != null) {
-      Navigator.push(context, MaterialPageRoute(builder: (context) => HomePage(user: user,)));
+      Navigator.push(context, MaterialPageRoute(builder: (context) => TeacherHomePage(user: user,)));
     } else {
       print("Error");
     }
@@ -291,4 +293,7 @@ class _LoginPageState extends State<LoginPage> {
       ),
     );
   }
+}
+
+class StudentHomePage {
 }
