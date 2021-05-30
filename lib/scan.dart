@@ -1,6 +1,7 @@
 import 'package:barcode_scan/barcode_scan.dart';
 import 'package:flutter/material.dart';
 
+
 class ScanPage extends StatefulWidget {
   @override
   _ScanPageState createState() => _ScanPageState();
@@ -39,9 +40,8 @@ class _ScanPageState extends State<ScanPage> {
             FlatButton(
               padding: EdgeInsets.all(15.0),
               onPressed: () async {
-
-
-                String codeSanner = await BarcodeScanner.scan();    //barcode scnner
+                String codeSanner =
+                    await BarcodeScanner.scan(); //barcode scnner
                 setState(() {
                   qrCodeResult = codeSanner;
                 });
@@ -52,8 +52,6 @@ class _ScanPageState extends State<ScanPage> {
                 //   BarcodeScanner.CameraAccessDenied;   we can print that user has denied for the permisions
                 //   BarcodeScanner.UserCanceled;   we can print on the page that user has cancelled
                 // }
-
-
               },
               child: Text(
                 "Open Scanner",
