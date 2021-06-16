@@ -15,11 +15,16 @@ class _SignUpPageState extends State<SignUpPage> {
   var email, password;
   register() async {
     FirebaseAuth firebaseAuth = FirebaseAuth.instance;
-    final User user = (await firebaseAuth
-            .createUserWithEmailAndPassword(email: email, password: password))
+    final User user = (await firebaseAuth.createUserWithEmailAndPassword(
+            email: email, password: password))
         .user;
     if (user != null) {
-      Navigator.push(context, MaterialPageRoute(builder: (context) => HomePage(user: user,)));
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) => HomePage(
+                    user: user,
+                  )));
     } else {
       print("Error");
     }
@@ -94,11 +99,30 @@ class _SignUpPageState extends State<SignUpPage> {
           height: 1.4 * (MediaQuery.of(context).size.height / 20),
           width: 6 * (MediaQuery.of(context).size.width / 10),
           margin: EdgeInsets.only(bottom: 20),
-          child: RaisedButton(
-            elevation: 5.0,
-            color: mainColor,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(30.0),
+          // child: RaisedButton(
+          //   elevation: 5.0,
+          //   color: mainColor,
+          //   shape: RoundedRectangleBorder(
+          //     borderRadius: BorderRadius.circular(30.0),
+          //   ),
+          //   onPressed: register,
+          //   child: Text(
+          //     "Sign Up",
+          //     style: TextStyle(
+          //       color: Colors.white,
+          //       letterSpacing: 1.5,
+          //       fontSize: MediaQuery.of(context).size.height / 40,
+          //     ),
+          //   ),
+          // ),
+
+          child: ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              elevation: 5.0,
+              primary: mainColor,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(30.0),
+              ),
             ),
             onPressed: register,
             child: Text(
@@ -173,7 +197,7 @@ class _SignUpPageState extends State<SignUpPage> {
       children: <Widget>[
         Padding(
           padding: EdgeInsets.only(top: 40),
-          child: FlatButton(
+          child: TextButton(
             onPressed: () {
               Navigator.push(
                 context,
@@ -210,7 +234,7 @@ class _SignUpPageState extends State<SignUpPage> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        resizeToAvoidBottomPadding: false,
+        // resizeToAvoidBottomPadding: false,
         backgroundColor: Color(0xfff2f3f7),
         body: Stack(
           children: <Widget>[
@@ -227,13 +251,15 @@ class _SignUpPageState extends State<SignUpPage> {
                 ),
               ),
             ),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                _buildLogo(),
-                _buildContainer(),
-                _buildSignUpBtn(),
-              ],
+            SingleChildScrollView(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  _buildLogo(),
+                  _buildContainer(),
+                  _buildSignUpBtn(),
+                ],
+              ),
             )
           ],
         ),
