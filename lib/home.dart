@@ -20,6 +20,8 @@ class _HomePageState extends State<HomePage> {
   final rollNum = TextEditingController();
   final phoneNum = TextEditingController();
   final emailNum = TextEditingController();
+  var _showQr = false;
+  QrImage _qrImage;
 
   @override
   void dispose() {
@@ -44,6 +46,14 @@ class _HomePageState extends State<HomePage> {
       'roll': roll,
       'number': phone,
       'email': email,
+    });
+  }
+
+  void _generateQrCode() {
+    setState(() {
+      _qrImage =
+          QrImage(data: rollNum.text, version: QrVersions.auto, size: 200);
+      _showQr = true;
     });
   }
 
@@ -75,17 +85,15 @@ class _HomePageState extends State<HomePage> {
                       controller: myName,
                     ),
 
-
                     TextFormField(
                       decoration: const InputDecoration(
                         icon: Icon(Icons.person),
                         hintText: 'What is your 11 digit roll number ?',
                         labelText: 'Roll *',
                       ),
-                       validator: RollValidator.validate,
+                      validator: RollValidator.validate,
                       controller: rollNum,
                     ),
-
 
                     TextFormField(
                       decoration: const InputDecoration(
@@ -93,10 +101,9 @@ class _HomePageState extends State<HomePage> {
                         hintText: 'What is your phone number?',
                         labelText: 'Contact *',
                       ),
-                       validator: ContactValidator.validate,
+                      validator: ContactValidator.validate,
                       controller: phoneNum,
                     ),
-
 
                     TextFormField(
                       decoration: const InputDecoration(
@@ -104,27 +111,51 @@ class _HomePageState extends State<HomePage> {
                         hintText: 'What is your email id?',
                         labelText: 'Email *',
                       ),
-                       validator: EmailValidator.validate,
+                      validator: EmailValidator.validate,
                       controller: emailNum,
                     ),
 
-                    
-                    FlatButton(
+                    // FlatButton(
+                    //   child: Text("Validate"),
+                    //   color: Colors.blue,
+                    //   textColor: Colors.white,
+                    //   onPressed: () {
+                    //     print("hello " + myName.text);
+                    //     SendData(myName.text, rollNum.text, phoneNum.text,
+                    //         emailNum.text);
+                    //   },
+                    // ),
+                    TextButton(
                       child: Text("Validate"),
-                      color: Colors.blue,
-                      textColor: Colors.white,
+                      // color: Colors.blue,
+                      // textColor: Colors.white,
+
+                      style: TextButton.styleFrom(
+                        primary: Colors.white,
+                        backgroundColor: Colors.blue,
+                      ),
+
                       onPressed: () {
-                        print("hello " + myName.text);
-                        SendData(myName.text, rollNum.text, phoneNum.text,
-                            emailNum.text);
+                        if (_key.currentState.validate()) {
+                          print("hello " + myName.text);
+                          SendData(myName.text, rollNum.text, phoneNum.text,
+                              emailNum.text);
+                        } else {
+                          // Invalid!
+                          print('invalid');
+                          return;
+                        }
                       },
                     ),
-                    QrImage(
-                        data: rollNum.text,
-                        version: QrVersions.auto,
-                        size: 200),
+
+                    _showQr
+                        ? _qrImage
+                        : TextButton(
+                            onPressed: _generateQrCode,
+                            child: Text('Generate Qr code')),
+
                     Text(widget.user.email.toString()),
-                    RaisedButton(
+                    ElevatedButton(
                       onPressed: () {
                         Navigator.push(
                           context,
